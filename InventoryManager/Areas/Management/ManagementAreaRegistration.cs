@@ -17,7 +17,7 @@ namespace InventoryManager.Areas.Management
             context.MapRoute(
                 "Management_default",
                 "Management/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Users", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

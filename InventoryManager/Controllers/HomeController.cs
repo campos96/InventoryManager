@@ -10,7 +10,7 @@ namespace InventoryManager.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Users", new { area = "Management" });
         }
 
         public ActionResult About()
