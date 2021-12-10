@@ -126,8 +126,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Management\Controllers\BinLotsController.cs" />
+    <Compile Include="Areas\Management\Controllers\BinsController.cs" />
+    <Compile Include="Areas\Management\Controllers\InventoryController.cs" />
+    <Compile Include="Areas\Management\Controllers\InventoryTransactionsController.cs" />
+    <Compile Include="Areas\Management\Controllers\LotsController.cs" />
+    <Compile Include="Areas\Management\Controllers\ProductDetailsController.cs" />
+    <Compile Include="Areas\Management\Controllers\ProductImagesController.cs" />
+    <Compile Include="Areas\Management\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Management\Controllers\UsersController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
+    <Compile Include="Areas\Receiving\Controllers\MaterialController.cs" />
+    <Compile Include="Areas\Receiving\ReceivingAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BinsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +171,8 @@
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\vmIssue.cs" />
+    <Compile Include="Models\vmReceive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1802,6 +1816,61 @@
     <Content Include="assets\fonts\themify\themify.woff" />
     <Content Include="Areas\Management\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Management\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Management\Views\Users\Form.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Index.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Create.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Details.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Index.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Create.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Details.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Create.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Details.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Index.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Create.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Details.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Create.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Delete.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Details.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Products\Form.cshtml" />
+    <Content Include="Areas\Management\Views\ProductImages\Form.cshtml" />
+    <Content Include="Areas\Management\Views\ProductDetails\Form.cshtml" />
+    <Content Include="Areas\Management\Views\Lots\Form.cshtml" />
+    <Content Include="Areas\Management\Views\InventoryTransactions\Form.cshtml" />
+    <Content Include="Areas\Management\Views\Inventory\Form.cshtml" />
+    <Content Include="Areas\Management\Views\Bins\Form.cshtml" />
+    <Content Include="Areas\Management\Views\BinLots\Form.cshtml" />
+    <Content Include="Areas\Receiving\Views\web.config" />
+    <Content Include="Areas\Receiving\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Receiving\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Receiving\Views\Material\Index.cshtml" />
+    <Content Include="Areas\Receiving\Views\Material\Receive.cshtml" />
+    <Content Include="Areas\Receiving\Views\Material\Issue.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1827,10 +1896,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Management\Data\" />
+    <Folder Include="Areas\Receiving\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<InventoryManager.Models.InventoryTransaction>
+
+@{
+    ViewBag.Title = "Transacciones de inventario";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>@ViewBag.Title<a href="@Url.Action("Create")" class="btn btn-primary float-end">Crear</a></h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BinLot.BinNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BinLot.BinNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TransactionType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", null, new { id = item.ID, Area = "Management" })" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="@Url.Action("Details", null, new { id = item.ID, Area = "Management" })" class="btn btn-sm btn-light">Detalles</a>
+                            <a href="@Url.Action("Delete", null, new { id = item.ID, Area = "Management" })" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('table').dataTable();
+        });
+
+    </script>
+}

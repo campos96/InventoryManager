@@ -1,0 +1,30 @@
+﻿@model InventoryManager.Models.User
+<div class="form-group">
+    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label" })
+    @Html.CheckBoxFor(model => model.Active)
+    @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+</div>

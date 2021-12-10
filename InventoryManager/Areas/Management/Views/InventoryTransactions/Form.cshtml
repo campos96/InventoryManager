@@ -1,0 +1,30 @@
+﻿@model InventoryManager.Models.InventoryTransaction
+<div class="form-group">
+    @Html.LabelFor(model => model.BinLotID, "BinLotID", htmlAttributes: new { @class = "control-label " })
+    @Html.DropDownList("BinLotID", null, htmlAttributes: new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.BinLotID, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.TransactionType, htmlAttributes: new { @class = "control-label" })
+    @Html.EnumDropDownListFor(model => model.TransactionType, htmlAttributes: new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.TransactionType, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Username, "Username", htmlAttributes: new { @class = "control-label" })
+    @Html.DropDownList("Username", null, htmlAttributes: new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+</div>

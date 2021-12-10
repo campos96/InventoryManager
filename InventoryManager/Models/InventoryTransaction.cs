@@ -13,18 +13,23 @@ namespace InventoryManager.Models
         public Guid ID { get; set; }
 
         [Required]
+        [Display(Name = "Lote en BIN")]
         public Guid BinLotID { get; set; }
 
         [Required]
+        [Display(Name = "Tipo de transaccion")]
         public TransactionType TransactionType { get; set; }
 
         [Required]
+        [Display(Name = "Cantidad")]
         public int Quantity { get; set; }
 
         [Required]
+        [Display(Name = "Fecha")]
         public DateTime Date { get; set; }
 
         [Required]
+        [Display(Name = "Usuario")]
         public string Username { get; set; }
 
         [ForeignKey("BinLotID")]

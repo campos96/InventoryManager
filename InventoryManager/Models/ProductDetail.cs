@@ -13,9 +13,11 @@ namespace InventoryManager.Models
         public Guid ID { get; set; }
 
         [Required]
+        [Display(Name = "SKU de producto")]
         public string ProductSku { get; set; }
 
         [Required]
+        [Display(Name = "Detalles")]
         public string Details { get; set; }
 
         [ForeignKey("ProductSku")]

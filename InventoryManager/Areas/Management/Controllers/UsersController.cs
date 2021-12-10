@@ -11,6 +11,7 @@ using InventoryManager.Models;
 
 namespace InventoryManager.Areas.Management.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private InventoryManagementContext db = new InventoryManagementContext();
@@ -47,7 +48,7 @@ namespace InventoryManager.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserName,Name,LastName,Email,Active")] User user)
+        public async Task<ActionResult> Create(User user)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +80,7 @@ namespace InventoryManager.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserName,Name,LastName,Email,Active")] User user)
+        public async Task<ActionResult> Edit(User user)
         {
             if (ModelState.IsValid)
             {

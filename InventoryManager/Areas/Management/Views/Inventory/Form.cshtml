@@ -1,0 +1,24 @@
+﻿@model InventoryManager.Models.Inventory
+<div class="form-group">
+    @Html.LabelFor(model => model.ProductSku, "ProductSku", htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownList("ProductSku", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ProductSku, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.QuantityAvailable, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.QuantityAvailable, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.QuantityAvailable, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.QuantityAllocated, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.QuantityAllocated, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.QuantityAllocated, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.LastUpdate, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.LastUpdate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.LastUpdate, "", new { @class = "text-danger" })
+</div>

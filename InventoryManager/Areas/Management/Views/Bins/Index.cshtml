@@ -1,0 +1,53 @@
+﻿@model IEnumerable<InventoryManager.Models.Bin>
+
+@{
+    ViewBag.Title = "Bines";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>@ViewBag.Title<a href="@Url.Action("Create")" class="btn btn-primary float-end">Crear</a></h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Number)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", null, new { id = item.Number, Area = "Management" })" class="btn btn-warning">Editar</a>
+                            <a href="@Url.Action("Details", null, new { id = item.Number, Area = "Management" })" class="btn btn-light">Detalles</a>
+                            <a href="@Url.Action("Delete", null, new { id = item.Number, Area = "Management" })" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('table').dataTable();
+        });
+
+    </script>
+}

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<InventoryManager.Models.BinLot>
+
+@{
+    ViewBag.Title = "Lotes de bines";
+}
+<div class="card">
+    <div class="card-header">
+        <h3>@ViewBag.Title <a href="@Url.Action("Create")" class="btn btn-primary float-end">Crear</a></h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BinNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Lot.Quantity)
+                    </th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bin.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lot.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lot.Quantity)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", null, new { id = item.ID, Area = "Management" })" class="btn btn-warning">Editar</a>
+                            <a href="@Url.Action("Details", null, new { id = item.ID, Area = "Management" })" class="btn btn-light">Detalles</a>
+                            <a href="@Url.Action("Delete", null, new { id = item.ID, Area = "Management" })" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('table').dataTable();
+        });
+
+    </script>
+}

@@ -1,51 +1,29 @@
 ﻿@model InventoryManager.Models.User
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+@{ 
+    ViewBag.Title = "Eliminar";
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+<div class="card">
+    <div class="card-header">
+        <h3>
+            @ViewBag.Title
+            <a href="@Url.Action("Index")" class="btn btn-light float-end">Regresar al inicio</a>
+        </h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h5>Are you sure you want to delete this?</h5>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <fieldset disabled>
+                @Html.Partial("~/Areas/Management/Views/Users/Form.cshtml")
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            </fieldset>
+            <div class="form-group">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+        }
+    </div>
 </div>

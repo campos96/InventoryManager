@@ -31,6 +31,9 @@ namespace InventoryManager
                 "~/assets/js/scrollbar/custom.js",
                 "~/assets/js/config.js",
                 "~/assets/js/sidebar-menu.js",
+                "~/assets/js/datatable/datatables/jquery.dataTables.min.js",
+                "~/assets/js/datatable/datatables/datatable.custom.js",
+                "~/assets/js/tooltip-init.js",
                 "~/assets/js/tooltip-init.js",
                 "~/assets/js/script.js"));
 
@@ -48,7 +51,9 @@ namespace InventoryManager
                 "~/assets/css/vendors/bootstrap.css",
                 "~/assets/css/style.css",
                 "~/assets/css/color-1.css",
-                "~/assets/css/responsive.css"));
+                "~/assets/css/responsive.css",
+                "~/assets/css/vendors/datatables.css",
+                "~/Content/site.css"));
         }
     }
 }

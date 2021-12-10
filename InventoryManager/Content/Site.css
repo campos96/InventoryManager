@@ -1,24 +1,20 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿.btn-warning {
+    color: black !important;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+
+.field-validation-error {
+    background-color: #FFCDD2 !important;
+    padding: 10px !important;
+    margin-bottom: 50px !important;
+    border-radius: 10px;
+    width: 100%;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.card-body {
+    padding-top: 0px !important;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+td {
+    padding: 10px !important;
 }

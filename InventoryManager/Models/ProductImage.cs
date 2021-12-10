@@ -13,18 +13,23 @@ namespace InventoryManager.Models
         public Guid ID { get; set; }
 
         [Required]
+        [Display(Name = "SKU de producto")]
         public string ProductSku { get; set; }
 
         [Required]
+        [Display(Name = "Nombre de archivo")]
         public string FileName { get; set; }
 
         [Required]
+        [Display(Name = "Nombre de archivo en servidor")]
         public string ServerFileName { get; set; }
         
         [Required]
+        [Display(Name = "Tipo de archivo")]
         public string FileType { get; set; }
 
         [Required]
+        [Display(Name = "Oculto?")]
         public bool Hidden { get; set; }
 
         [ForeignKey("ProductSku")]
