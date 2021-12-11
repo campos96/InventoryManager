@@ -188,6 +188,11 @@ namespace InventoryManager.Areas.Receiving.Controllers
                             }
                         }
 
+
+                        inventory.QuantityAvailable -= vmIssue.Quantity;
+                        db.Entry(inventory).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+
                         transaction.Commit();
 
                         return RedirectToAction("Index", "Lots", new { Area = "Management" });
