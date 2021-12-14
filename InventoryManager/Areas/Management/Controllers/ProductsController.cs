@@ -29,11 +29,16 @@ namespace InventoryManager.Areas.Management.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            Product product = await db.Products
+                .Where(p => p.Sku == id)
+                .FirstOrDefaultAsync();
             if (product == null)
             {
                 return HttpNotFound();
             }
+
+            product.ProductInventory = await db.ProductInventory.Where(p => p.ProductSku == product.Sku).ToListAsync();
+            product.ProductTransations = await db.ProductTransations.Where(p => p.Sku == product.Sku && p.Quantity > 0).ToListAsync();
             return View(product);
         }
 

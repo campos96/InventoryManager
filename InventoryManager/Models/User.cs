@@ -27,5 +27,7 @@ namespace InventoryManager.Models
         [Required]
         [Display(Name = "Activo?")]
         public bool Active { get; set; }
+
+        public IEnumerable<vwUserSales> UserSales { get; set; }
     }
 }

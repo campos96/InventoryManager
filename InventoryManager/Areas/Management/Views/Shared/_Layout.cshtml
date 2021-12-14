@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="@Url.Content("~/assets/images/favicon.png")" type="image/x-icon">
     <title> Inventory Manager - @ViewBag.Title</title>
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
                     </div>
                 </form>
                 <div class="header-logo-wrapper col-auto p-0">
-                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="../assets/images/logo/logo.png" alt=""></a></div>
+                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="@Url.Content("~/assets/images/logo/logo.png")" alt=""></a></div>
                     <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
                 </div>
                 <div class="left-header col horizontal-wrapper ps-0">
@@ -158,21 +158,21 @@
             <!-- Page Sidebar Ends-->
             <div class="page-body">
                 @*<div class="container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-6">
-                                <h3></h3>
-                            </div>
-                            <div class="col-6">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                                    <li class="breadcrumb-item">Pages</li>
-                                    <li class="breadcrumb-item active">Sample Page</li>
-                                </ol>
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3></h3>
+                                </div>
+                                <div class="col-6">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                                        <li class="breadcrumb-item">Pages</li>
+                                        <li class="breadcrumb-item active">Sample Page</li>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <!-- Container-fluid starts-->
                 <div class="container-fluid pt-4">
                     @RenderBody()

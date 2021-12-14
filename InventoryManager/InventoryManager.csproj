@@ -116,6 +116,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -160,6 +161,14 @@
     <Compile Include="Migrations\202112050246271_renameInventorytable.designer.cs">
       <DependentUpon>202112050246271_renameInventorytable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112141514581_addDbViews.cs" />
+    <Compile Include="Migrations\202112141514581_addDbViews.Designer.cs">
+      <DependentUpon>202112141514581_addDbViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112141529302_usingFixedNamesForDbViews.cs" />
+    <Compile Include="Migrations\202112141529302_usingFixedNamesForDbViews.Designer.cs">
+      <DependentUpon>202112141529302_usingFixedNamesForDbViews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bin.cs" />
     <Compile Include="Models\BinLot.cs" />
@@ -173,6 +182,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\vmIssue.cs" />
     <Compile Include="Models\vmReceive.cs" />
+    <Compile Include="Models\vwProductInventory.cs" />
+    <Compile Include="Models\vwProductTransations.cs" />
+    <Compile Include="Models\vwUserSales.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1898,6 +1910,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1929,6 +1942,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112050246271_renameInventorytable.resx">
       <DependentUpon>202112050246271_renameInventorytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112141514581_addDbViews.resx">
+      <DependentUpon>202112141514581_addDbViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112141529302_usingFixedNamesForDbViews.resx">
+      <DependentUpon>202112141529302_usingFixedNamesForDbViews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

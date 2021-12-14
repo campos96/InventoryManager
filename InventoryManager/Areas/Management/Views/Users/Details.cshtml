@@ -1,6 +1,6 @@
 ﻿@model InventoryManager.Models.User
 
-@{ 
+@{
     ViewBag.Title = "Detalles";
 }
 
@@ -22,3 +22,53 @@
         }
     </div>
 </div>
+
+@if (Model != null)
+{
+    <div class="card">
+        <div class="card-header">
+            <h3>Resumen de ventas</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-body">
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserSales.FirstOrDefault().Sku)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserSales.FirstOrDefault().UnitPrice)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserSales.FirstOrDefault().TotalQuantity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserSales.FirstOrDefault().TotalPrice)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.UserSales)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sku)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalQuantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

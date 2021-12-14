@@ -7,18 +7,130 @@
 <div class="card">
     <div class="card-header">
         <h3>
-            @ViewBag.Title
             <a href="@Url.Action("Index")" class="btn btn-light float-end">Regresar al inicio</a>
         </h3>
     </div>
     <div class="card-body">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <fieldset disabled="">
-                @Html.Partial("~/Areas/Management/Views/Products/Form.cshtml")
-            </fieldset>
-        }
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Detalles</h3>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <fieldset disabled="">
+                        @Html.Partial("~/Areas/Management/Views/Products/Form.cshtml")
+                    </fieldset>
+                }
+            </div>
+            <div class="col-md-6">
+                <h3>Inventario</h3>
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductInventory.FirstOrDefault().BinNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductInventory.FirstOrDefault().LotNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductInventory.FirstOrDefault().Quantity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductInventory.FirstOrDefault().ReceivedAt)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductInventory.FirstOrDefault().ExpirationDate)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ProductInventory)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BinNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LotNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ReceivedAt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ExpirationDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
+@if (Model != null)
+{
+    <div class="card">
+        <div class="card-header">
+            <h3>Transactions</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-body">
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().TransactionType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().BinNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().LotNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().Quantity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().Username)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductTransations.FirstOrDefault().Date)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ProductTransations)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TransactionType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BinNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LotNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

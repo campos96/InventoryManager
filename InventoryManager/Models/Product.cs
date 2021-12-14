@@ -32,5 +32,9 @@ namespace InventoryManager.Models
 
         [Display(Name = "Descripcion")]
         public string Description { get; set; }
+
+        public IEnumerable<vwProductInventory> ProductInventory { get; set; }
+
+        public IEnumerable<vwProductTransations> ProductTransations { get; set; }
     }
 }

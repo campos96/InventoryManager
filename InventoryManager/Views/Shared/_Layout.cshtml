@@ -1,42 +1,211 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="@Url.Content("~/assets/images/favicon.png")" type="image/x-icon">
+    <link rel="shortcut icon" href="@Url.Content("~/assets/images/favicon.png")" type="image/x-icon">
+    <title> OOOInventory Manager - @ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+    @Styles.Render("~/Cuba/css")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        <div class="page-header">
+            <div class="header-wrapper row m-0">
+                <form class="form-inline search-full col" action="#" method="get">
+                    <div class="form-group w-100">
+                        <div class="Typeahead Typeahead--twitterUsers">
+                            <div class="u-posRelative">
+                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Cuba .." name="q" title="" autofocus>
+                                <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
+                            </div>
+                            <div class="Typeahead-menu"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="header-logo-wrapper col-auto p-0">
+                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="@Url.Content("~/assets/images/logo/logo.png")" alt=""></a></div>
+                    <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
+                </div>
+                <div class="left-header col horizontal-wrapper ps-0">
+                    <ul class="horizontal-menu">
+                        <li class="mega-menu outside">
+
+                        </li>
+                        <li class="level-menu outside">
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-right col-8 pull-right right-header p-0">
+                    <ul class="nav-menus">
+                        <li>
+                            <div class="mode"><i class="fa fa-moon-o"></i></div>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="profile-nav onhover-dropdown p-0 me-0">
+                                <div class="media profile-media">
+                                    <img class="b-r-10" src="@Url.Content("~/assets/images/dashboard/profile.jpg")" alt="">
+                                    <div class="media-body">
+                                        <span>@User.Identity.Name</span>
+                                        <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+                                    </div>
+                                </div>
+                                <ul class="profile-dropdown onhover-show-div">
+                                    @*<li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>*@
+                                    @*<li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>*@
+                                    @*<li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>*@
+                                    @*<li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>*@
+                                    <li><a href="@Url.Action("Logout", "Account", new { Area = "" })"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+
+                        }
+
+                    </ul>
+                </div>
+                <script class="result-template" type="text/x-handlebars-template">
+                    <div class="ProfileCard u-cf">
+                        <div class="ProfileCard-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg></div>
+                        <div class="ProfileCard-details">
+                            <div class="ProfileCard-realName"></div>
+                        </div>
+                    </div>
+                </script>
+                <script class="empty-template" type="text/x-handlebars-template">
+                    <div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div>
+                </script>
             </div>
         </div>
+        <!-- Page Header Ends-->
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            <div class="sidebar-wrapper">
+                <div>
+                    <div class="logo-wrapper">
+                        <a href="index.html"><img class="img-fluid for-light" src="@Url.Content("~/assets/images/logo/logo.png")" alt=""><img class="img-fluid for-dark" src="@Url.Content("~/assets/images/logo/logo_dark.png")" alt=""></a>
+                        <div class="back-btn"><i class="fa fa-angle-left"></i></div>
+                        <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
+                    </div>
+                    <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid" src="@Url.Content("~/assets/images/logo/logo-icon.png")" alt=""></a></div>
+                    <nav class="sidebar-main">
+                        <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+                        <div id="sidebar-menu">
+                            <ul class="sidebar-links" id="simple-bar">
+                                <li class="back-btn">
+                                    <a href="index.html">
+                                        <img class="img-fluid" src="@Url.Content("~/assets/images/logo/logo-icon.png")" alt="">
+                                    </a>
+                                    <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+                                </li>
+                                <li class="">
+                                    <div>
+                                        <h6 class="">Management</h6>
+                                    </div>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "Inventory", new { Area = "Management"})"><i data-feather="list"> </i><span>Inventory</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "InventoryTransactions", new { Area = "Management"})"><i data-feather="list"> </i><span>Inventory Transactions</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "Lots", new { Area = "Management"})"><i data-feather="list"> </i><span>Lots</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "BinLots", new { Area = "Management"})"><i data-feather="list"> </i><span>Bin Lots</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "Products", new { Area = "Management"})"><i data-feather="list"> </i><span>Products</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "ProductDetails", new { Area = "Management"})"><i data-feather="list"> </i><span>Product Details</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "ProductImages", new { Area = "Management"})"><i data-feather="list"> </i><span>Product Images</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "Bins", new { Area = "Management"})"><i data-feather="list"> </i><span>Bins</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Index", "Users", new { Area = "Management"})"><i data-feather="list"> </i><span>Users</span></a>
+                                </li>
+                                <br />
+                                <hr />
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Receive", "Material", new { Area = "Receiving"})"><i data-feather="list"> </i><span>Material receive</span></a>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="@Url.Action("Issue", "Material", new { Area = "Receiving"})"><i data-feather="list"> </i><span>Material Issue</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Sidebar Ends-->
+            <div class="page-body">
+                @*<div class="container-fluid">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3></h3>
+                                </div>
+                                <div class="col-6">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                                        <li class="breadcrumb-item">Pages</li>
+                                        <li class="breadcrumb-item active">Sample Page</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                <!-- Container-fluid starts-->
+                <div class="container-fluid pt-4">
+                    @RenderBody()
+                    @*<div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+                <!-- Container-fluid Ends-->
+            </div>
+            <!-- footer start-->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 footer-copyright text-center">
+                            <p class="mb-0">Copyright 2021 © Cuba theme by pixelstrap  </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Cuba")
     @RenderSection("scripts", required: false)
 </body>
 </html>

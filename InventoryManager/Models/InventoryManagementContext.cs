@@ -25,5 +25,14 @@ namespace InventoryManager.Models
         public DbSet<Inventory> Inventories { get; set; }
 
         public DbSet<InventoryTransaction> InventoryTransactions { get; set; }
+
+
+
+        //db views 
+        public DbSet<vwProductInventory> ProductInventory { get; set; }
+
+        public DbSet<vwProductTransations> ProductTransations { get; set; }
+
+        public DbSet<vwUserSales> UserSales { get; set; }
     }
 }

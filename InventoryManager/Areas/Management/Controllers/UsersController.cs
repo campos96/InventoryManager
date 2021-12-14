@@ -29,11 +29,12 @@ namespace InventoryManager.Areas.Management.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.Users.FindAsync(id);
+            User user = await db.Users.Where(u => u.UserName == id).FirstOrDefaultAsync();
             if (user == null)
             {
                 return HttpNotFound();
             }
+            user.UserSales = await db.UserSales.Where(u => u.Username == user.UserName).ToListAsync();
             return View(user);
         }
 
