@@ -34,7 +34,9 @@ namespace InventoryManager.Areas.Management.Controllers
             {
                 return HttpNotFound();
             }
-            user.UserSales = await db.UserSales.Where(u => u.Username == user.UserName).ToListAsync();
+            user.UserSales = await db.UserSales
+                .Where(u => u.Username == user.UserName)
+                .AsNoTracking().ToListAsync();
             return View(user);
         }
 

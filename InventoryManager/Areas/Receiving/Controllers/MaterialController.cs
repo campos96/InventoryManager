@@ -124,37 +124,25 @@ namespace InventoryManager.Areas.Receiving.Controllers
 
                         if (vmIssue.Quantity > inventory.QuantityAvailable)
                         {
-                            ModelState.AddModelError("Quantity", "Cantidad mayor a la disponible...");
+                            ModelState.AddModelError("Quantity", $"Cantidad mayor a la disponible... (Cantidad disponible: {inventory.QuantityAvailable})");
                             ViewBag.ProductSku = new SelectList(db.Products, "Sku", "Name", vmIssue.ProductSku);
                             return View(vmIssue);
                         }
 
 
-                        //take available data from related tables
                         var lots = await db.Lots
                             .Where(l => l.ProductSku == vmIssue.ProductSku && l.Quantity > 0)
                             .OrderBy(l => l.ReceivedAt)
                             .ToListAsync();
 
                         var quantityIssued = 0;
+                        var affectedquantity = 0;
 
                         foreach (var lot in lots)
                         {
                             if (lot.Quantity >= vmIssue.Quantity - quantityIssued)
                             {
-                                var inventoryTransaction = new InventoryTransaction
-                                {
-                                    ID = Guid.NewGuid(),
-                                    BinLotID = db.BinLots.Where(b => b.LotNumber == lot.Number).FirstOrDefault().ID,
-                                    TransactionType = TransactionType.Issue,
-                                    Quantity = vmIssue.Quantity - quantityIssued,
-                                    Date = DateTime.Now,
-                                    Username = User.Identity.Name
-                                };
-
-                                db.InventoryTransactions.Add(inventoryTransaction);
-                                await db.SaveChangesAsync();
-
+                                affectedquantity = vmIssue.Quantity - quantityIssued;
                                 lot.Quantity -= vmIssue.Quantity - quantityIssued;
                                 db.Entry(lot).State = EntityState.Modified;
                                 await db.SaveChangesAsync();
@@ -164,28 +152,25 @@ namespace InventoryManager.Areas.Receiving.Controllers
                             else
                             {
                                 quantityIssued += lot.Quantity;
-
-                                var inventoryTransaction = new InventoryTransaction
-                                {
-                                    ID = Guid.NewGuid(),
-                                    BinLotID = db.BinLots.Where(b => b.LotNumber == lot.Number).FirstOrDefault().ID,
-                                    TransactionType = TransactionType.Issue,
-                                    Quantity = lot.Quantity,
-                                    Date = DateTime.Now,
-                                    Username = User.Identity.Name
-                                };
-
-                                db.InventoryTransactions.Add(inventoryTransaction);
-                                await db.SaveChangesAsync();
-
-
+                                affectedquantity = lot.Quantity;
                                 lot.Quantity = 0;
                                 db.Entry(lot).State = EntityState.Modified;
                                 await db.SaveChangesAsync();
-
-
-
                             }
+
+                            var inventoryTransaction = new InventoryTransaction
+                            {
+                                ID = Guid.NewGuid(),
+                                BinLotID = db.BinLots.Where(b => b.LotNumber == lot.Number).FirstOrDefault().ID,
+                                TransactionType = TransactionType.Issue,
+                                Quantity = lot.Quantity,
+                                Date = DateTime.Now,
+                                Username = User.Identity.Name
+                            };
+
+                            db.InventoryTransactions.Add(inventoryTransaction);
+                            await db.SaveChangesAsync();
+
                         }
 
 
