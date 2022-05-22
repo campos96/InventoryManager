@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class Lots
+    public partial class Lot
     {
-        public Lots()
+        public Lot()
         {
-            BinLots = new HashSet<BinLots>();
+            BinLots = new HashSet<BinLot>();
         }
 
         [Key]
@@ -34,7 +34,7 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Fecha de expiracion")]
         public DateTime? ExpirationDate { get; set; }
 
-        public virtual Products ProductSkuNavigation { get; set; }
-        public virtual ICollection<BinLots> BinLots { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual ICollection<BinLot> BinLots { get; set; }
     }
 }

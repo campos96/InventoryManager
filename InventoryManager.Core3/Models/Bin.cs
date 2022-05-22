@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class Bins
+    public partial class Bin
     {
-        public Bins()
+        public Bin()
         {
-            BinLots = new HashSet<BinLots>();
+            BinLots = new HashSet<BinLot>();
         }
 
         [Key]
@@ -24,6 +24,6 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Fecha Creado")]
         public DateTime CreatedAt { get; set; }
 
-        public virtual ICollection<BinLots> BinLots { get; set; }
+        public virtual ICollection<BinLot> BinLots { get; set; }
     }
 }

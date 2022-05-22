@@ -31,6 +31,6 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Ultima actualizacion")]
         public DateTime LastUpdate { get; set; }
 
-        public virtual Products ProductSkuNavigation { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

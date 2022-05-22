@@ -8,26 +8,26 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class InventoryManagement_TestContext : DbContext
+    public partial class InventoryManagementContext : DbContext
     {
-        public InventoryManagement_TestContext()
+        public InventoryManagementContext()
         {
         }
 
-        public InventoryManagement_TestContext(DbContextOptions<InventoryManagement_TestContext> options)
+        public InventoryManagementContext(DbContextOptions<InventoryManagementContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<BinLots> BinLots { get; set; }
-        public virtual DbSet<Bins> Bins { get; set; }
+        public virtual DbSet<BinLot> BinLots { get; set; }
+        public virtual DbSet<Bin> Bins { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<InventoryTransactions> InventoryTransactions { get; set; }
-        public virtual DbSet<Lots> Lots { get; set; }
-        public virtual DbSet<ProductDetails> ProductDetails { get; set; }
-        public virtual DbSet<ProductImages> ProductImages { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<InventoryTransaction> InventoryTransactions { get; set; }
+        public virtual DbSet<Lot> Lots { get; set; }
+        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
+        public virtual DbSet<ProductImage> ProductImages { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<VwProductInventory> VwProductInventory { get; set; }
         public virtual DbSet<VwProductTransations> VwProductTransations { get; set; }
         public virtual DbSet<VwUserSales> VwUserSales { get; set; }
@@ -36,7 +36,6 @@ namespace InventoryManager.Core3.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-J46H7PM;Initial Catalog=InventoryManagement_Test;Integrated Security=SSPI;");
             }
         }

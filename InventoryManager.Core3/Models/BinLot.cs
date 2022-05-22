@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class BinLots
+    public partial class BinLot
     {
-        public BinLots()
+        public BinLot()
         {
-            InventoryTransactions = new HashSet<InventoryTransactions>();
+            InventoryTransactions = new HashSet<InventoryTransaction>();
         }
 
         [Key]
@@ -26,8 +26,8 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Numero de lote")]
         public string LotNumber { get; set; }
 
-        public virtual Bins BinNumberNavigation { get; set; }
-        public virtual Lots LotNumberNavigation { get; set; }
-        public virtual ICollection<InventoryTransactions> InventoryTransactions { get; set; }
+        public virtual Bin Bin { get; set; }
+        public virtual Lot Lot { get; set; }
+        public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; }
     }
 }

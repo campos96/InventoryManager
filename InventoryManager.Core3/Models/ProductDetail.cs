@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class ProductImages
+    public partial class ProductDetail
     {
         [Key]
         public Guid Id { get; set; }
@@ -18,21 +18,9 @@ namespace InventoryManager.Core3.Models
         public string ProductSku { get; set; }
 
         [Required]
-        [Display(Name = "Nombre de archivo")]
-        public string FileName { get; set; }
+        [Display(Name = "Detalles")]
+        public string Details { get; set; }
 
-        [Required]
-        [Display(Name = "Nombre de archivo en servidor")]
-        public string ServerFileName { get; set; }
-
-        [Required]
-        [Display(Name = "Tipo de archivo")]
-        public string FileType { get; set; }
-
-        [Required]
-        [Display(Name = "Oculto?")]
-        public bool Hidden { get; set; }
-
-        public virtual Products ProductSkuNavigation { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class Users
+    public partial class User
     {
-        public Users()
+        public User()
         {
-            InventoryTransactions = new HashSet<InventoryTransactions>();
+            InventoryTransactions = new HashSet<InventoryTransaction>();
         }
 
         [Key]
@@ -35,6 +35,6 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Activo?")]
         public bool Active { get; set; }
 
-        public virtual ICollection<InventoryTransactions> InventoryTransactions { get; set; }
+        public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; }
     }
 }

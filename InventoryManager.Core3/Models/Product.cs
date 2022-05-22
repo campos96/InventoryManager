@@ -8,14 +8,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.Core3.Models
 {
-    public partial class Products
+    public partial class Product
     {
-        public Products()
+        public Product()
         {
             Inventory = new HashSet<Inventory>();
-            Lots = new HashSet<Lots>();
-            ProductDetails = new HashSet<ProductDetails>();
-            ProductImages = new HashSet<ProductImages>();
+            Lots = new HashSet<Lot>();
+            ProductDetails = new HashSet<ProductDetail>();
+            ProductImages = new HashSet<ProductImage>();
         }
 
         [Key]
@@ -44,8 +44,8 @@ namespace InventoryManager.Core3.Models
         public string Description { get; set; }
 
         public virtual ICollection<Inventory> Inventory { get; set; }
-        public virtual ICollection<Lots> Lots { get; set; }
-        public virtual ICollection<ProductDetails> ProductDetails { get; set; }
-        public virtual ICollection<ProductImages> ProductImages { get; set; }
+        public virtual ICollection<Lot> Lots { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace InventoryManager.Core3.Models
         Receive, Issue, Transfer, Return
     }
 
-    public partial class InventoryTransactions
+    public partial class InventoryTransaction
     {
         [Key]
         public Guid Id { get; set; }
@@ -38,7 +38,7 @@ namespace InventoryManager.Core3.Models
         [Display(Name = "Usuario")]
         public string Username { get; set; }
 
-        public virtual BinLots BinLot { get; set; }
-        public virtual Users UsernameNavigation { get; set; }
+        public virtual BinLot BinLot { get; set; }
+        public virtual User User { get; set; }
     }
 }
